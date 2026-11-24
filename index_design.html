@@ -1389,7 +1389,7 @@ const P2={
   satRuckLb:[40,0,40,0,45,0,45,0,45,0,45,0],
   skills:['Night land nav — red lens, pace count in dark','TCCC — hemorrhage control drills timed','Call for fire — full 9-line rehearsed','Knots — square, bowline, prusik, swiss seat','Bulldog Knowledge Test — review packet, timed practice run','Land nav — map-to-ground at speed','TCCC — casualty drag + carry technique','Radio — reports under time pressure','Rope systems — mechanical advantage basics','5-Paragraph Order — full OPORD written + briefed out loud','Night nav — full route planning exercise','Block review — retest weakest skill'],
   notes:{2:'SANDHURST STANDARD TEST Wednesday',3:'600yd LACTATE TRIAL Tuesday',4:'RPFA SIM Wednesday + 2-MILE TRIAL Friday',5:'★ CFT MTC 880yd TRIAL Tuesday',6:'SANDHURST STANDARD TEST + 600yd TRIAL + ★ CFT MANUF TEST Sat',8:'RPFA SIM + 2-MILE TRIAL',9:'600yd TRIAL Tue + USMC PFT 3-MILE TRIAL Fri',10:'SANDHURST STANDARD TEST Wednesday',11:'SCREENER PEAK: PFT→CFT back-to-back rehearsal + SMEAC order + night land nav under ruck',12:'★ TAPER 7-10 DAYS: BULLDOG SCREENER WINDOW. Lifting volume down, no rucks, sharp pull-up and run sessions only'},
-  exit:'SCREENER = HARD REQUIREMENT (~Feb 13): 12 STRICT PULL-UPS · 1st CLASS PFT 235+ · 1st CLASS CFT 235+. Plan targets: PFT ~258 (12 pull-ups, plank 3:30, alt 3mi 20:30) · CFT ~250 (MTC 2:55, ammo 95, MANUF 2:30, official MCO 6100.13A scale) to clear 235 with margin · field skills sharp · taper'
+  exit:'SCREENER = HARD REQUIREMENT (~Feb 13): 12 STRICT PULL-UPS (stretch 15) · 1st CLASS PFT 235+ · 1st CLASS CFT 235+. Plan targets: PFT ~258 (12 pull-ups, plank 3:30, alt 3mi 20:30) · CFT ~250 (MTC 2:55, ammo 95, MANUF 2:30, official MCO 6100.13A scale) to clear 235 with margin · field skills sharp · taper'
 };
 
 const P3={
@@ -1426,7 +1426,7 @@ const P3={
   satRuckLb:[45,0,45,0,45,0,45,0,45,0,40,0],
   skills:['PFT event strategy — order, pacing, warmup script','AFT pacing — splits for sub-9:00 alt','Land nav — timed course','TCCC — full MARCH scenario','Test-day nutrition + Stiff Lip timing rehearsal','600yd race plan — 300 splits memorized','Jump technique — film yourself, fix arm swing','Bulldog Knowledge Test — full timed practice run, review misses','PFT dress rehearsal walk-through','Recovery protocols — own them cold','Taper discipline — the plan IS the workout','TEST WEEK — execute, log, celebrate, recalibrate'],
   notes:{1:'RECOVER FROM SCREENER: deload week. Then start the surplus (+300-500 kcal above true maintenance)',2:'SANDHURST STANDARD TEST Wednesday',3:'600yd TRIAL Tuesday',4:'RPFA SIM + 2-MILE TRIAL',5:'★ CFT MTC 880yd TRIAL Tuesday',6:'SANDHURST STANDARD TEST + 600yd TRIAL + ★ CFT MANUF TEST Sat',8:'RPFA SIM + 2-MILE TRIAL',9:'600yd TRIAL Tue + USMC PFT 3-MILE TRIAL Fri',10:'SANDHURST STANDARD TEST Wednesday',11:'TAPER WEEK — volume drops 40%, intensity stays crisp + ★ CFT MTC TRIAL Tue',12:'★ PFT + AFT TEST WEEK — the year gate: PFT 400+ · AFT 400+ · ★ CFT MANUF TEST'},
-  exit:'EXIT: strict pull 14 · BW 170-175 · hold 1st Class PFT/CFT · USAFA spring test W36'
+  exit:'EXIT: strict pull 16 · BW 175-180 · hold 1st Class PFT/CFT · USAFA spring test W36'
 };
 
 const P4={
@@ -1463,7 +1463,7 @@ const P4={
   satRuckLb:[50,0,50,0,50,0,50,0,50,0,45,0],
   skills:['O-Course movement — vaults, low walls, rope','Uniform swim — 25m + tread, build comfort','Land nav — full timed course, graded','TCCC — scenario under fatigue','Rope climb — legs technique (J-hook / S-wrap)','Obstacle circuit — timed, logged','Night nav — route execution','Team-event comms — count reps, call cadence','Squad Assault — terrain model, full brief-back under time pressure','Night Land Nav — full route under a loaded ruck, red lens only','TAPER — gear staged, sock system locked, sleep 9hr','TRYOUT WINDOW — pace 90-95%, loud, team-first, never stop moving'],
   notes:{2:'SANDHURST STANDARD TEST Wednesday',3:'600yd TRIAL Tuesday',4:'RPFA SIM + 2-MILE TRIAL',5:'★ CFT MTC 880yd TRIAL Tuesday',6:'SANDHURST STANDARD TEST + 600yd TRIAL + ★ CFT MANUF TEST Sat',8:'RPFA SIM + 2-MILE TRIAL',9:'600yd TRIAL Tue + USMC PFT 3-MILE TRIAL Fri',10:'SANDHURST STANDARD TEST — final full-dress rehearsal of THEIR format',11:'★ TRYOUT TAPER — volume down 40%, everything crisp + ★ CFT MTC TRIAL Tue',12:'★ SANDHURST TRYOUTS — the Year 1 gate + ★ CFT MANUF TEST. Fresh, known to the team, standard owned.'},
-  exit:'YEAR 1 CLOSE: strict pull 15+ (on the road to 22 by end of junior year) · BW 175-180 · 50lb ruck owned · 1st Class PFT/CFT held · Sandhurst tryouts = optional secondary'
+  exit:'YEAR 1 CLOSE: strict pull 17+ (on the road to 22 by end of junior year) · BW 175-180 · 50lb ruck owned · 1st Class PFT/CFT held · Sandhurst tryouts = optional secondary'
 };
 
 const PBLOCKS={1:P1,2:P2,3:P3,4:P4};
@@ -1833,8 +1833,288 @@ function block1Rebuild(w){
 }
 
 
+/* ===== BLOCK 2 REBUILD (W13-W24, Nov 24): same standard as Block 1. 1st Class PFT + CFT at the Feb 13 screener is the hard requirement. Pull-ups and ammo cans first. ===== */
+const B2R={
+  // strict pull-up target by week, re-based Nov 24 from 10 clean reps. 12 = hard requirement, 15 = stretch
+  pullTgt:[10,10,11,11,12,12,13,13,14,14,15,15],
+  maxWk:[0,0,1,0,1,0,1,0,1,0,1,0], // W15, W17, W19, W21, W23
+  wtd:['4x3 @ BW+10lb','5x3 @ BW+10lb','3x3 @ BW+10lb','5x3 @ BW+15lb','3x3 @ BW+15lb','4x3 @ BW+15lb','3x3 @ BW+20lb','5x3 @ BW+20lb','3x3 @ BW+20lb','5x3 @ BW+25lb','2x2 @ BW+10lb','none'],
+  backoff:['3x5','3x5','2x5','3x6','2x6','2x5','2x6','3x6','2x7','3x7','2x5','none'],
+  gtgReps:[4,4,4,4,5,5,5,5,6,6,5,3],
+  thuVol:[35,35,38,38,42,30,45,45,48,48,30,0],
+  emom:[3,3,3,3,4,3,4,4,4,4,3,0],
+  pushVol:[60,60,70,70,80,60,80,80,80,80,60,30],
+  ammo:[82,0,85,87,0,88,88,90,92,0,95,0], // 0 = the test day carries the ammo max that week
+  ints:['5x800m @ 3:50','6x400m @ 1:40 in boots','none (MTC trial)','6x800m @ 3:44','6x400m @ 1:38 in boots','5x800m @ 3:42','6x800m @ 3:40','7x400m @ 1:36 in boots','6x800m @ 3:36','7x800m @ 3:35','4x400m @ 1:36 in boots','3x200m relaxed'],
+  tempo:['3 mi @ 8:00/mi','3 mi @ 7:55/mi','3.5 mi @ 7:50/mi','none','3.5 mi @ 7:45/mi','3 mi @ 7:45/mi','none','none','none','4 mi @ 7:35/mi','2.5 mi @ 7:40/mi','none'],
+  longRun:[0,4,0,5,0,4,0,5,0,6,0,0],
+  ruckSat:[[5,40,'14:15'],0,[5,40,'14:00'],0,[6,40,'14:00'],0,[4,40,'14:00'],0,[6,45,'13:45'],0,[4,40,'14:00'],0],
+  ruckWed:[0,0,0,[3,40,'14:00'],0,[3,40,'14:15'],0,[4,40,'13:45'],0,0,0,0],
+  squatKg:[85,87.5,90,92.5,95,92.5,97.5,100,102.5,105,90,0],
+  rdlKg:[85,87.5,90,92.5,95,92.5,97.5,100,102.5,105,90,0],
+  manuf:['2:50','2:48','2:46','2:44','2:42','test','2:40','2:38','2:37','2:36','2:35','screener'],
+};
+/* load steps: +step every `every` weeks from the W11 logs. W18 holds W17, W23 drops back, W24 is light */
+function b2n(i){return i<=4?i:i===5?4:Math.min(8,i-1);}
+function b2up(base,step,i,every){const n=b2n(i);let v=base+step*Math.floor(n/(every||1));if(i===10)v=Math.round(v*0.9/2.5)*2.5;if(i===11)v=Math.round(v*0.7/2.5)*2.5;return v;}
+const B2RULE=' Weekly rule: all sets clean = the weight goes up next week. Miss a set = hold it, never drop.';
+function b2Daily(i,light){
+  return [
+    {h:'DAILY MINIMUMS (Block 2: only what the screener tests)'},
+    {e:'Pull-up Grease-the-Groove',t:(light?'3-4':'5-6')+' sets of '+B2R.gtgReps[i]+' full reps',s:'strict, chin over bar, full lockout',note:'spread across the day, never near failure. Each set should feel like you had 4+ reps left. The #1 driver of the pull-up number'},
+    {e:'Push-ups',t:(light?Math.min(40,B2R.pushVol[i]):B2R.pushVol[i])+' total',s:'full range, sets of 10-15',note:'MANUF has push-ups. Spread across the day, never to failure'},
+    {e:'Plank holds',t:'2 x 60-90s',s:'rigid line',note:'PFT event. Keeps the plank at max points with almost no recovery cost'},
+    {e:'Evening Negatives',t:light?'1x5 @ 6s':'2x5 @ 6s',s:'BW',note:'close every day with this. Log it in the negatives log'},
+  ];
+}
+const B2_TIME=' SHORT ON TIME: do the first block only and log it. A short session that happens beats a full one that does not.';
+function b2TestPre(i){return [{h:'DAILY MINIMUMS (test day: light)'},{e:'Pull-up Grease-the-Groove',t:'3 sets of '+Math.max(2,B2R.gtgReps[i]-2)+' full reps',s:'strict',note:'early in the day only. Nothing within 3 hours of the test'},{e:'Push-ups',t:'30 total',s:'easy sets',note:'well before the test'}];}
+function b2Mtc(i){return {id:'tue',name:'Tuesday',focus:'CFT: MTC 880yd TIME TRIAL',
+  metrics:[['880yd MTC time','m:ss (1st Class goal 2:56 or faster)'],['Effort 1-5','#'],['Total session time','h:mm']],
+  strip:'DEDICATED CFT TEST. 880 yards in boots, flat out, for time. 1st Class goal: 2:56 or faster. Go out at 85 percent for the first 440, then empty the tank. Log the raw time here and in the STANDARDS tab.',
+  blocks:[...b2TestPre(i),{h:'PM SESSION'},{h:'Warmup 2'},{e:'Warmup 2 (see Warmup/Cooldown tab), in boots',t:'15 min',s:'-',note:'strides and buildups in the boots you will test in'},
+    {h:'TEST'},{e:'880yd MTC TIME TRIAL',t:'1 x max',s:'boots, goal 2:56',note:'even first half, hard second half. Log the exact time'},
+    {h:'AMMO CAN PRIORITY'},{e:'Ammo Can Lifts',t:'3 x 45s on / 45s off',s:'30lb',note:'after the trial, on tired legs, like the real CFT. Log total reps'},
+    {h:'Cooldown 2'},{e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};}
+function b2CftSim(i,w){return {id:'wed',name:'Wednesday',focus:'CFT: FULL SIM (MTC, Ammo Can, MANUF)',
+  metrics:[['880yd MTC time','m:ss (goal 2:56)'],['Ammo can reps, 2 min','# (goal 95)'],['MANUF time','m:ss (goal 2:35)'],['Total session time incl. transitions','m:ss']],
+  strip:'THE FULL CFT, ONE SESSION, test-day spacing. 1st Class is 235+. Plan targets: MTC 2:56, ammo cans 95, MANUF 2:35. Last full sim on record: MTC 3:10, ammo 77, MANUF 2:50 (208, 2nd Class). This number is the real CFT standing, so run it even if the week went badly.',
+  blocks:[...b2TestPre(i),{h:'PM SESSION (boots on)'},{h:'Warmup 2'},{e:'Warmup 2 (see Warmup/Cooldown tab), in boots',t:'15 min',s:'-',note:'covers all three events'},
+    {h:'EVENT 1: MOVEMENT TO CONTACT'},{e:'880yd MTC',t:'1 x max',s:'boots, goal 2:56',note:'start the clock'},{e:'Transition',t:'3 min',s:'water only',note:'real CFT spacing'},
+    {h:'EVENT 2: AMMO CAN LIFTS'},{e:'Ammo Can 2-min Max',t:'1 x 2 min',s:'30lb, goal 95',note:'24 every 30 s. Steady beats a fast start that dies at 60 s'},{e:'Transition',t:'3 min',s:'water only',note:''},
+    {h:'EVENT 3: MANEUVER UNDER FIRE'},{e:'MANUF',t:'300yd course, 1 x max',s:'goal 2:35',note:'sprint, crawls, buddy drag, fireman carry, ammo can carry, push-ups, grenade throw'},
+    {h:'Cooldown 3'},{e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'20 min',s:'-',note:'log all three numbers and the total. Score it in the CFT calculator'}]};}
+function b2TwoMile(i,goal){return {id:'fri',name:'Friday',focus:'2-MILE TIME TRIAL',
+  metrics:[['2-mile time','m:ss (goal '+goal+')'],['Mile 1 split','m:ss'],['Total session time','h:mm']],
+  strip:'Run fitness check on the way to the 3-mile. Goal '+goal+' or faster. Even first mile, negative split. No 2-mile on the screener, but it tells you if the 3-mile pace is real.',
+  blocks:[...b2TestPre(i),{h:'PM SESSION'},{h:'Warmup 2'},{e:'Warmup 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    {h:'TEST'},{e:'2-MILE TIME TRIAL',t:'8 laps',s:'goal '+goal,note:'first mile at goal pace, then push. Log the final time and the split'},
+    {h:'AMMO CAN PRIORITY'},{e:'Ammo Can Lifts',t:'2 x 1 min',s:'30lb',note:'after the run, tired legs. Log total reps'},
+    {h:'Cooldown 2'},{e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};}
+function b2ThreeMile(i){return {id:'fri',name:'Friday',focus:'USMC PFT: 3-MILE TIME TRIAL',
+  metrics:[['3-mile time','m:ss (goal 21:30, plan 20:30)'],['Mile splits','m:ss / m:ss / m:ss'],['Total session time','h:mm']],
+  strip:'USMC PFT 3-mile, three weeks out from the screener. Goal 21:30 or faster, plan target 20:30. Even splits. Do not blow up mile 1.',
+  blocks:[...b2TestPre(i),{h:'PM SESSION'},{h:'Warmup 2'},{e:'Warmup 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    {h:'TEST'},{e:'3-MILE TIME TRIAL',t:'12 laps',s:'goal 21:30',note:'log splits by mile. Score it in the PFT calculator'},
+    {h:'Cooldown 2'},{e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};}
+function b2Bulldog(i){return {id:'fri',name:'Friday',focus:'BULLDOG STACK: FULL PFT INTO FULL CFT',
+  metrics:[['Pull-ups (strict)','reps (goal 13)'],['Plank','m:ss'],['3-mile time','m:ss (goal 21:30)'],['MTC time','m:ss'],['Ammo can reps','#'],['MANUF time','m:ss']],
+  strip:'THE SCREENER REHEARSAL, five weeks out. Full PFT, then the full CFT with almost no rest. Every number goes into the calculators. If either test scores under 235, the next two weeks of training get adjusted to the weak event.',
+  blocks:[...b2TestPre(i),{h:'PM SESSION'},{h:'Warmup 2'},{e:'Warmup 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:'preps both tests'},
+    {h:'PART 1: FULL PFT'},{e:'Strict Pull-ups',t:'1 max set',s:'goal 13',note:'first event, fresh. Strict standard only'},{e:'Plank',t:'max hold',s:'goal 3:30+',note:''},{e:'3-Mile Run',t:'for time',s:'goal 21:30',note:'max effort'},
+    {h:'TRANSITION'},{e:'Transition',t:'as short as you can',s:'water only',note:'the screener gives you little rest here'},
+    {h:'PART 2: FULL CFT'},{e:'880yd MTC',t:'1 x max',s:'boots, goal 2:56',note:''},{e:'Ammo Can 2-min Max',t:'1 x 2 min',s:'30lb, goal 90',note:'on tired legs'},{e:'MANUF',t:'1 x max',s:'goal 2:40',note:''},
+    {h:'Cooldown 2'},{e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'20 min',s:'-',note:'log every number'}]};}
+function b2ManufTest(i){return {id:'sat',name:'Saturday',focus:'CFT: MANUF TEST + Easy Run',
+  metrics:[['MANUF time','m:ss (goal 2:40)'],['Run time','mm:ss'],['Total session time','h:mm']],
+  strip:'Dedicated MANUF test, fresh, first thing. Goal 2:40 or faster today, 2:35 at the screener. Then an easy run.',
+  blocks:[...b2TestPre(i),{h:'Warmup 3'},{e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+    {h:'TEST'},{e:'MANUF',t:'300yd course, 1 x max',s:'goal 2:40',note:'full course: sprint, crawls, drag, carries, push-ups, throw'},
+    {h:'AEROBIC'},{e:'Easy Run',t:'3 mi',s:'Zone 2',note:'conversational'},
+    {h:'Cooldown 3'},{e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};}
+function b2Screener(){return {id:'sat',name:'Saturday',focus:'SCREENER: PFT + CFT (Feb 13)',
+  metrics:[['Pull-ups','reps'],['Plank','m:ss'],['3-mile','m:ss'],['PFT score','#'],['MTC','m:ss'],['Ammo can','reps'],['MANUF','m:ss'],['CFT score','#']],
+  strip:'TEST DAY. 1st Class PFT and 1st Class CFT. Eat a normal breakfast 3 hours out. Same warmup you have practiced. Strict pull-ups, every rep to full lockout. Ammo cans: 24 every 30 seconds. Log every number tonight.',
+  blocks:[{h:'TEST DAY'},{e:'Warmup 1 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:'2 easy pull-up singles, 10 easy ammo can presses'},
+    {h:'PFT'},{e:'Strict Pull-ups',t:'1 max set',s:'goal 12, stretch 15',note:'dead hang, legs locked, no kick'},{e:'Plank',t:'max hold',s:'goal 3:30+',note:''},{e:'3-Mile Run',t:'for time',s:'goal 21:30',note:'even splits'},
+    {h:'CFT'},{e:'880yd MTC',t:'1 x max',s:'goal 2:56',note:''},{e:'Ammo Can 2-min Max',t:'1 x 2 min',s:'goal 95',note:''},{e:'MANUF',t:'1 x max',s:'goal 2:35',note:''},
+    {h:'After'},{e:'Cooldown + refuel',t:'20 min',s:'-',note:'export your data and send it for the Block 2 review'}]};}
+const B2_SPECIAL={
+  mtc:w=>b2Mtc(w-1), cftfull:w=>b2CftSim(w-1,w), twomile:w=>b2TwoMile(w-1,w<=4?'15:00':'14:40'),
+  threemile:w=>b2ThreeMile(w-1), bulldog:w=>b2Bulldog(w-1), muf:w=>b2ManufTest(w-1),
+};
+function block2Rebuild(w){
+  const i=w-1, W=w+12;
+  const tgt=B2R.pullTgt[i], maxWk=!!B2R.maxWk[i];
+  const taper=w===12, lighten=w===6||w===11;
+  const wt=B2R.wtd[i];
+
+  const mon={id:'mon',name:'Monday',focus:taper?'Pull Sharpen (screener week)':maxWk?'PULL MAX TEST + Heavy Pull (3-block)':'Heavy Pull + Arms (3-block)',
+    metrics:[['STRICT pull-up max','reps (target '+tgt+')'],['Plank max hold','m:ss'],['Total session time','h:mm']],
+    strip:'BLOCK 2 WEEK '+w+' (W'+W+'). Strict pull-up target: '+tgt+' (12 is the hard requirement, 15 is the stretch). Order: PULL STRENGTH first while fresh, then ARMS + SHOULDERS, then CORE + AMMO. If time runs short, cut from the bottom. Never cut the pull block.'+(maxWk?' MAX TEST DAY: test first, fresh. Sunday before is full rest. 5 min easy warmup, dead hang 2x20s, 2 easy singles, rest 2 min, then one all-out set. Count only full strict reps. Camera at bar height from the side.':'')+(lighten?' LIGHTER WEEK: fewer sets, same weights. Recovery week on 5-hour sleep.':'')+(taper?' SCREENER WEEK: sharpen only. Nothing heavy, nothing to failure.':''),
+    blocks:taper?[
+      ...b2Daily(i,true),
+      {h:'PM SESSION (short)'},
+      {e:'Warmup 1 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+      {e:'Strict Pull-ups',t:'3 x 4',s:'BW, crisp',note:'stay sharp. Stop far from failure'},
+      {e:'Chin-over-bar Holds',t:'2x10s',s:'BW',note:''},
+      {e:'Ammo Can Lifts',t:'1 x 30 easy',s:'30lb',note:'groove only'},
+      {e:'Cooldown 1 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    ]:[
+      ...b2Daily(i,lighten),
+      {h:'PM SESSION: 3 BLOCKS'},
+      {h:'Warmup 1'},
+      {e:'Warmup 1 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:'include 2 easy pull-up singles'},
+      {h:'BLOCK 1: PULL STRENGTH (first, fresh)'},
+      maxWk?{e:'STRICT PULL-UP MAX TEST',t:'1 all-out set',s:'dead hang to chin over bar, full lockout',note:'stop counting at the first kick or short rep. Log the strict number only. Target '+tgt}
+           :{e:'Strict pull-up top set',t:'1 set, stop 1 short of failure',s:'BW',note:'quality reps only. Log the number'},
+      {e:'Weighted Pull-ups',t:wt.split(' @ ')[0],s:wt.split(' @ ')[1]||'',note:'3 min rest. Strict reps only. If a rep kicks, drop 5lb. On max weeks this is lighter on purpose'},
+      {e:'Pull-up back-off sets',t:B2R.backoff[i],s:'BW',note:'2 min rest, stop 2 reps short of failure'},
+      {e:'Chin-over-bar Holds',t:'3x10-15s',s:'BW',note:'chest to the bar, elbows by your ribs. Trains the top of the rep'},
+      {e:'Lat Pulldown',t:lighten?'3x8':'4x8',s:b2up(150,5,i,2)+'lb',note:'You did 145x8 on Nov 17. +5lb every 2 weeks.'+B2RULE},
+      {e:'Single-Arm DB Row',t:lighten?'3x10 each':'4x10 each',s:b2up(70,5,i,2)+'lb',note:'You did 65-70lb on Nov 17. +5lb every 2 weeks.'+B2RULE},
+      {e:'Chest-Supported or T-bar Row',t:'3x10',s:b2up(75,5,i,2)+'lb',note:'You did 70x10 on Nov 17. +5lb every 2 weeks.'+B2RULE},
+      {e:'Face Pulls',t:'3x15',s:b2up(50,2.5,i,2)+'lb cable',note:'shoulder health under this much pulling. You did 47.5x15.'+B2RULE},
+      {h:'BLOCK 2: ARMS + SHOULDERS'},
+      {e:'Machine or Cable Curl',t:lighten?'3x10':'4x10',s:b2up(60,2.5,i,2)+'lb',note:'You did 55-60x10. Biceps carry the top of the pull-up.'+B2RULE},
+      {e:'Cable Rope Hammer Curl',t:'3x12',s:b2up(40,2.5,i,2)+'lb',note:'grip and forearm for the bar and the cans. You did 37.5x12.'+B2RULE},
+      {e:'Preacher Curl or Incline DB Curl',t:'3x10',s:b2up(52.5,2.5,i,2)+'lb',note:'3rd bicep angle.'+B2RULE},
+      {e:'Machine Shoulder Press',t:'3x8',s:b2up(70,5,i,2)+'lb',note:'You did 70x8 on Nov 19. Pressing strength is ammo can strength.'+B2RULE},
+      {e:'Lateral Raises',t:'3x15',s:b2up(20,2.5,i,3)+'lb DB each hand',note:'small muscle, stays light.'+B2RULE},
+      {e:'Wrist Curls + Reverse Wrist Curls',t:'2x15 each',s:b2up(30,2.5,i,3)+'lb / '+b2up(15,2.5,i,3)+'lb DB',note:'forearm size and grip.'+B2RULE},
+      {h:'BLOCK 3: CORE + AMMO'},
+      maxWk?{e:'Plank Max Hold',t:'1 max hold',s:'target 3:30+',note:'PFT event. Log it'}:{e:'Hollow Body Hold',t:'3x30s',s:'BW',note:'the position that stops the leg kick on the bar: ribs down, legs locked together'},
+      {e:'Hanging Straight-Leg Raises',t:'3x10',s:'BW',note:'legs locked, no swing. Same core control as a strict pull-up'},
+      {e:'Ammo Can Lifts',t:lighten?'2 x 45s':'3 x 45s on / 45s off',s:'30lb',note:'3rd weekly ammo touch. Log total reps'},
+      {e:'Farmer Carry',t:'3x50m',s:b2up(75,5,i,2)+'lb DB each hand',note:'grip for the bar and the ammo can carry.'+B2RULE},
+      {h:'Cooldown 1'},
+      {e:'Cooldown 1 (see Warmup/Cooldown tab)',t:'15-20 min',s:'-',note:'protein right away'},
+    ]};
+
+  const tueBuilt={id:'tue',name:'Tuesday',focus:taper?'Sharpen (screener week)':'Run Speed (2-block)',
+    metrics:[['Rep splits','list'],['Effort 1-5','#'],['Total session time','h:mm']],
+    strip:'RUN DAY. Runs have been skipped since the Nov 3 AFT, and the 3-mile and MTC are half of the two tests. This session counts toward this week run total. '+(/boots/.test(B2R.ints[i])?'This week is MTC speed: 400s in boots at faster than MTC goal pace.':'This week is 3-mile speed: 800s at faster than 3-mile goal pace.')+' SHORT ON TIME: warmup plus half the reps still counts. Log it.',
+    blocks:[
+      ...b2Daily(i,taper||lighten),
+      {h:'PM SESSION: 2 BLOCKS'},
+      {h:'BLOCK 1: WARMUP + DRILLS'},
+      {e:'Warmup 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:'strides and buildups included'},
+      {e:'A-skip / B-skip / High knees / Butt kicks',t:'2x20m each',s:'-',note:''},
+      {h:'BLOCK 2: INTERVALS'},
+      {e:/400m/.test(B2R.ints[i])?'400m Repeats':/200m/.test(B2R.ints[i])?'200m Strides':'800m Repeats',t:B2R.ints[i].split(' @ ')[0],s:B2R.ints[i].split(' @ ')[1]||'relaxed',note:/400m/.test(B2R.ints[i])?'90 s walk between reps. MTC is 880 yards flat out: this is that speed in boots':'2:30 walk/jog between reps. Even splits. If you slow by more than 5 s, stop the set'},
+      ...(taper?[]:[{e:'Strides',t:'4x100m',s:'relaxed speed',note:'closes the speed work'}]),
+      {h:'Cooldown 2'},
+      {e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    ]};
+  const tue=w===3?b2Mtc(i):tueBuilt;
+
+  const wr=B2R.ruckWed[i];
+  const wedBuilt={id:'wed',name:'Wednesday',focus:taper?'Easy Ammo + Chest (screener week)':'Ammo Cans + Chest + '+(wr?'Ruck':'CFT Conditioning')+' (3-block)',
+    metrics:[['Ammo can 2-min max','reps (target '+(B2R.ammo[i]||'-')+')'],[wr?'Ruck time':'Conditioning time','m:ss'],['Total session time','h:mm']],
+    strip:taper?'Screener week. Ammo cans easy, groove only.':'AMMO CAN DAY. Ammo cans have not been logged since September (77 reps). Target this week: '+B2R.ammo[i]+' in 2 minutes. Screener goal 95 = 24 every 30 seconds. If time runs short, cut Block 3, then Block 2. Ammo cans are the last thing to cut. 30lb can, or a 30lb dumbbell in both hands, and write down which.',
+    blocks:taper?[
+      ...b2Daily(i,true),
+      {h:'PM SESSION (short)'},
+      {e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+      {e:'Ammo Can Lifts',t:'1 x 30 easy',s:'30lb',note:'groove only. Test is Saturday'},
+      {e:'Push-ups',t:'2 x 15',s:'easy',note:''},
+      {e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    ]:[
+      ...b2Daily(i,lighten),
+      {h:'PM SESSION: 3 BLOCKS'},
+      {h:'Warmup 3'},
+      {e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:'include the ammo can primer'},
+      {h:'BLOCK 1: CFT AMMO CANS'},
+      {e:'Ammo Can 2-min Max',t:'1 x 2 min',s:'30lb, target '+B2R.ammo[i],note:'pace 24 every 30 s from the start. Log the reps and the implement'},
+      {e:'Ammo Can Density',t:lighten?'3 x 40s on / 20s off':'5 x 40s on / 20s off',s:'30lb',note:'builds the middle of the 2 minutes. Same pace every round'},
+      {e:'Ammo Can Overhead Hold',t:'3x20s',s:'30lb',note:'lockout endurance'},
+      {h:'BLOCK 2: CHEST + TRICEPS'},
+      {e:'Barbell Bench Press',t:lighten?'3x8':'4x8',s:b2up(115,5,i,2)+'lb',note:'+5lb every 2 weeks.'+B2RULE},
+      {e:'Incline DB or Machine Press',t:'3x10',s:b2up(65,5,i,2)+'lb',note:'upper chest.'+B2RULE},
+      {e:'Dips',t:'4x'+(W<=16?10:12),s:'BW',note:'helps the press-out on the ammo cans and the MANUF push-ups'},
+      {e:'Incline Overhead Skull Crushers',t:'3x10-12',s:b2up(37.5,2.5,i,2)+'lb total',note:'long head of the triceps. Elbow pain = switch to rope overhead extension.'+B2RULE},
+      {e:'Cable Chest Fly',t:'3x12',s:b2up(25,2.5,i,3)+'lb',note:''+B2RULE},
+      {h:wr?'BLOCK 3: RUCK':'BLOCK 3: CFT CONDITIONING'},
+      wr?{e:'Ruck',t:wr[0]+' mi',s:wr[1]+'lb @ '+wr[2]+'/mi',note:ruckRx(wr[0],wr[1],wr[2])}
+        :{e:'MANUF Shuttles',t:lighten?'4 rounds':'6 rounds',s:'25yd sprint out, 10 push-ups, 25yd sprint back',note:'60 s rest between rounds. Log the fastest round. This is MANUF speed without a partner'},
+      {h:'Cooldown 3'},
+      {e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15-20 min',s:'-',note:''},
+    ]};
+  const wed=[2,5,10].includes(w)?b2CftSim(i,w):wedBuilt;
+
+  const thu={id:'thu',name:'Thursday',focus:taper?'Rest (screener week)':'Pull-up Volume + Shoulders/Arms + Legs (3-block)',
+    metrics:[['Total strict pull-ups','reps (target '+B2R.thuVol[i]+')'],['Plank hold','m:ss'],['Total session time','h:mm']],
+    strip:taper?'Screener week. Daily minimums only, then rest.':'Pull-up volume day. '+B2R.thuVol[i]+' full strict reps in sets of '+Math.round(tgt/2)+', never to failure. If time runs short, cut legs first, then arms. Pull-up volume is the last thing to cut.',
+    blocks:taper?[
+      ...b2Daily(i,true),
+      {h:'REST'},
+      {e:'Easy walk + mobility',t:'20 min',s:'-',note:'nothing hard 2 days out'},
+    ]:[
+      ...b2Daily(i,lighten),
+      {h:'PM SESSION: 3 BLOCKS'},
+      {h:'Warmup 1'},
+      {e:'Warmup 1 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+      {h:'BLOCK 1: PULL-UP VOLUME'},
+      {e:'Strict Pull-up Volume',t:B2R.thuVol[i]+' total full reps',s:'sets of '+Math.round(tgt/2)+', rest 60-90 s',note:'when a rep comes up short, finish the total with 5 s negatives'},
+      {e:'Chin-over-bar Holds',t:'3x10-15s',s:'BW',note:'chest to the bar, elbows by your ribs'},
+      {e:'Slow Negatives',t:'3x3',s:'5s down',note:'strength at the bottom of the rep'},
+      {e:'Wide-Grip Pulldown',t:'3x10',s:b2up(130,5,i,2)+'lb',note:'You did 125x10 on Nov 19.'+B2RULE},
+      {h:'BLOCK 2: SHOULDERS + ARMS'},
+      {e:'Machine Shoulder Press',t:lighten?'3x8':'4x8',s:b2up(70,5,i,2)+'lb',note:'You did 70x8 on Nov 19.'+B2RULE},
+      {e:'Cable Tricep Pushdown',t:'3x12',s:b2up(50,2.5,i,2)+'lb',note:'You did 47.5x12.'+B2RULE},
+      {e:'Overhead Tricep Extension',t:'3x12',s:b2up(45,5,i,3)+'lb',note:'You did 45x12.'+B2RULE},
+      {e:'Machine or Cable Curl',t:'3x10',s:b2up(60,2.5,i,2)+'lb',note:'You did 60x10 on Nov 19.'+B2RULE},
+      {h:'BLOCK 3: LEGS'},
+      {e:'Back Squat',t:lighten?'3x5':'4x5',s:kgLb(B2R.squatKg[i]),note:'You did 182lb (82.5kg) x5 on W10. +2.5kg per week.'+B2RULE},
+      {e:'RDL',t:'3x8',s:kgLb(B2R.rdlKg[i]),note:'You did 182lb x8 on W10.'+B2RULE},
+      {e:'Calf Raises',t:'3x15',s:kgLb(b2up(77.5,2.5,i,2)),note:'calves and shins for the run volume'},
+      {h:'Cooldown 1'},
+      {e:'Cooldown 1 (see Warmup/Cooldown tab)',t:'15-20 min',s:'-',note:'Nov 19 you ran out of time before legs. Start this session 15 min earlier or cut calves, not the squat'},
+    ]};
+
+  let fri;
+  if(w===4)fri=b2TwoMile(i,'15:00');
+  else if(w===8)fri=b2TwoMile(i,'14:40');
+  else if(w===7)fri=b2Bulldog(i);
+  else if(w===9)fri=b2ThreeMile(i);
+  else if(taper)fri={id:'fri',name:'Friday',focus:'Rest (screener tomorrow)',metrics:[['Sleep last night','hrs'],['Notes','text']],
+    strip:'Screener tomorrow. Short shakeout, lay out your kit, eat normally, in bed early.',
+    blocks:[{h:'REST'},{e:'Shakeout jog + 4 strides',t:'15 min',s:'very easy',note:'optional'},{e:'Stage kit',t:'10 min',s:'-',note:'shoes, boots, watch, water, breakfast'}]};
+  else fri={id:'fri',name:'Friday',focus:'Tempo Run + Pull Density + Ammo (2-block)',
+    metrics:[['Tempo avg pace','min/mi'],['EMOM pull-ups completed','reps'],['Total session time','h:mm']],
+    strip:'RUN DAY. Tempo builds the 3-mile. Then pull-ups and ammo cans, the two priorities. SHORT ON TIME: tempo plus the EMOM. Log it.',
+    blocks:[
+      ...b2Daily(i,lighten),
+      {h:'PM SESSION: 2 BLOCKS'},
+      {h:'Warmup 2'},
+      {e:'Warmup 2 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+      {h:'BLOCK 1: TEMPO'},
+      {e:'Tempo Run',t:B2R.tempo[i].split(' @ ')[0],s:B2R.tempo[i].split(' @ ')[1]||'',note:'comfortably hard, even pace, no stops. If you have to stop, you started too fast'},
+      {h:'BLOCK 2: PULL DENSITY + AMMO'},
+      {e:'Pull-up EMOM',t:'10 min',s:B2R.emom[i]+' full reps each minute',note:'if reps fail before minute 8, drop 1 rep next week'},
+      {e:'Ammo Can Lifts',t:'3 x 1 min',s:'30lb',note:'1 min rest. Log total reps'},
+      {h:'Cooldown 2'},
+      {e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''},
+    ]};
+
+  const rs=B2R.ruckSat[i], lr=B2R.longRun[i];
+  let sat;
+  if(taper)sat=b2Screener();
+  else if(w===6)sat=b2ManufTest(i);
+  else sat={id:'sat',name:'Saturday',focus:(rs?'Ruck':'Long Run')+' + MANUF Practice (3-block)',
+    metrics:[[rs?'Ruck time':'Run time','mm:ss'],['MANUF fastest round','m:ss'],['Total session time','h:mm']],
+    strip:(rs?'':'RUN DAY. ')+'Aerobic base plus CFT skill work. MANUF target this week: '+B2R.manuf[i]+'. Order: AEROBIC, MANUF, FINISHER.',
+    blocks:[
+      ...b2Daily(i,lighten),
+      {h:'Warmup 3'},
+      {e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+      {h:'BLOCK 1: AEROBIC BASE'},
+      rs?{e:'Ruck',t:rs[0]+' mi',s:rs[1]+'lb @ '+rs[2]+'/mi',note:ruckRx(rs[0],rs[1],rs[2])}
+        :{e:'Easy Run',t:lr+' mi',s:'Zone 2',note:'conversational. This is the run base under the 3-mile'},
+      {h:'BLOCK 2: MANUF PRACTICE'},
+      {e:'MANUF Circuit',t:lighten?'2 rounds':'3 rounds',s:'sprint, crawls, drag, fireman carry, ammo can carry, push-ups, throw',note:'full rest between rounds. Log the fastest round. Target '+B2R.manuf[i]},
+      {h:'BLOCK 3: FINISHER'},
+      {e:'Farmer Carry',t:'3x50m',s:b2up(75,5,i,2)+'lb DB each hand',note:'grip'},
+      {e:'Core Circuit',t:'2 rounds',s:'plank + side plank + hollow hold, 30s each',note:''},
+      {h:'Cooldown 3'},
+      {e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:'feet check if you rucked'},
+    ]};
+
+  const sun={id:'sun',name:'Sunday',focus:taper?'Rest + Block 2 Review':'Full Rest + Weekly Check',
+    metrics:[['Sleep avg this week','hrs'],['Body weight (avg of 3 morning weigh-ins)','lb'],['Soreness/fatigue 1-5','#'],['Runs done this week','#'],['Ammo can days this week','#']],
+    strip:taper?'Screener done. Full rest. Send the export for the Block 2 review.':'WEEKLY CHECK. Log all 5 numbers honestly. The priority check on the COMMAND page counts your runs, ammo can days and CFT sims from your logs. DELOAD TRIGGER: soreness 4+ two weeks running, or the pull-up max drops two tests in a row = next week is a lighter week (fewer sets, same weights). Sleep runs near 5 hours, so on bad-sleep weeks keep the pull block and the ammo cans and cut Block 2 accessories first. WEIGHT: weigh 3 mornings and log the average. Down more than 2lb in 2 weeks = add 300 kcal a day. Sunday before a max test is full rest.',
+    blocks:[{h:'REST'},{e:'Full rest',t:'-',s:'-',note:'strength shows up on rest days'},
+      {e:'Review the week',t:'10 min',s:'-',note:'pull max, ammo cans, run paces, CFT numbers'},
+      {e:'Deload trigger check',t:'2 min',s:'-',note:'see the strip above'}]};
+
+  const out=[mon,tue,wed,thu,fri,sat,sun];
+  out.b2r=true;
+  return out;
+}
+
 function buildDays(b,w,forceFlags){
   if(b===1 && w>=4 && w<=12 && !forceFlags)return block1Rebuild(w);
+  if(b===2 && w>=1 && w<=12 && !forceFlags)return block2Rebuild(w);
   if(b===1&&w===-1&&!forceFlags)return sandhurstDays();
   if(b===1&&w===0&&!forceFlags)return trialDays();
   const BP=PBLOCKS[b===undefined?1:b]||PBLOCKS[1];
@@ -2253,7 +2533,8 @@ function buildDays(b,w,forceFlags){
    W11-W24 only (no logs there yet): chin-over-bar holds on pull days,
    and at least 2 ammo can lift days every week. */
 // Strict pull-up ladder by global week (Nov 10: 2 full reps filmed, 12 by the screener). Mirrors PULL_LADDER in the add-on
-const PULL_LADDER_W={10:2,11:3,12:4,13:4,14:5,15:6,16:7,17:7,18:8,19:9,20:10,21:10,22:11,23:12,24:12};
+// Nov 24: re-based from 10 clean strict reps (Nov 17). 12 = hard requirement, 15 = stretch
+const PULL_LADDER_W={10:2,11:3,12:10,13:10,14:10,15:11,16:11,17:12,18:12,19:13,20:13,21:14,22:14,23:15,24:15};
 const STRICT_NOTE='STRICT: dead hang, shoulders set down and back, legs locked together, no kip. Knees up or a kick = no rep. If you have to kick, the set is over.';
 const AMMO_NOTE='STANDARD: can at shoulder height, press to full lockout every rep. No lockout = no rep. Screener pace: 95 in 2:00 = 24 every 30 s.';
 const isPullRow=e=>/pull-?up|negative|chin-over|grease/i.test(e)&&!/pulldown|push-?up/i.test(e);
@@ -2266,6 +2547,7 @@ buildDays=(function(orig){return function(b,w,ff){
     if(isPullRow(x.e)&&!String(x.note||'').includes('STRICT:'))x.note=STRICT_NOTE+(x.note?' · '+x.note:'');
     if(isAmmoLift(x.e)&&!String(x.note||'').includes('STANDARD:'))x.note=AMMO_NOTE+(x.note?' · '+x.note:'');
   }));
+  if(days.b2r)return days; // Nov 24: Block 2 rebuild sizes its own pull-ups, holds and ammo work
   if(ff||typeof b!=='number'||!(w>=1))return days;
   const wk=(b-1)*12+w;
   if(wk<11||wk>24)return days;
@@ -2365,6 +2647,11 @@ function getCustomDayObject(customEvent,dayId,dayName){
 function getWorkoutTemplate(b,w,templateKey){
   const BP=PBLOCKS[b]||PBLOCKS[1];
   const i=Math.max(0,(w||1)-1);
+  if(b===2&&w>=1&&w<=12){ // Nov 24: Block 2 swaps use the rebuilt days
+    if(B2_SPECIAL[templateKey])return B2_SPECIAL[templateKey](w);
+    const se=TEMPLATE_CATALOG.standard.find(t=>t.key===templateKey);
+    if(se)return buildDays(2,w).find(d=>d.id===se.homeId)||null;
+  }
   if(templateKey==='cftfull')return cftFullSimDay(BP,i);
   if(typeof templateKey==='string'&&templateKey.indexOf('day:')===0){
     return buildDays(b,w).find(d=>d.id===templateKey.slice(4))||null;
@@ -3602,7 +3889,8 @@ const PULL_GOAL=12; // Nov 10: screener goal is 12 strict (was 15)
 const PULL_LONG={goal:22,by:'end of junior year (~May 2029)'}; // Nov 10: long-range goal
 const STRICT_SINCE='2026-11-10'; // full strict reps only from here. Earlier counts included kipped and half reps
 // W4-W9 kept as history. W10 rebased to 2 full strict reps (filmed Nov 10), straight line to 12 by W23
-const PULL_LADDER={4:7,5:8,6:8,7:9,8:9,9:10,10:2,11:3,12:4,13:4,14:5,15:6,16:7,17:7,18:8,19:9,20:10,21:10,22:11,23:12,24:12};
+// Nov 24: W12 on re-based from 10 clean strict reps (Nov 17). 12 = hard requirement at the screener, 15 = stretch
+const PULL_LADDER={4:7,5:8,6:8,7:9,8:9,9:10,10:2,11:3,12:10,13:10,14:10,15:11,16:11,17:12,18:12,19:13,20:13,21:14,22:14,23:15,24:15};
 const LAST_WK=24; // Feb screener week: the hard requirement lives here
 function ladderAt(w){return PULL_LADDER[Math.max(4,Math.min(LAST_WK,w||4))];}
 /* program week = calendar week + the shift set with 'Make Wx my current week' (targets follow where you are in the plan) */
@@ -4612,6 +4900,46 @@ function gateCards(){
 }
 
 /* ═════════════ TODAY (dashboard) ═════════════ */
+/* Nov 24: PRIORITY CHECK. Counts what was actually logged against what the plan scheduled: runs, ammo can days, CFT sims. */
+function priorityWeek(gw){
+  if(!(gw>=4&&gw<=24))return null;
+  const b=gw<=12?1:2, w=gw<=12?gw:gw-12;
+  let plan;try{plan=buildDays(b,w);}catch(e){return null;}
+  const saved=(typeof _readLocal==='function'?_readLocal(keyFor(b,w)):null)||{};
+  const isRun=e=>/\b(run|repeats|tempo|mile|mtc|880yd|strides)\b/i.test(e)&&!/pull|ammo|carry|warmup|cooldown|shakeout/i.test(e);
+  const isRuck=e=>/\bruck\b/i.test(e)&&!/warmup/i.test(e);
+  const isAm=e=>/ammo can/i.test(e)&&!/carry/i.test(e);
+  const isSim=d=>/CFT: FULL SIM|CFT .*FULL SIM|BULLDOG|SCREENER:/i.test(d.focus||'');
+  const has=(d,f)=>(d.blocks||[]).some(x=>!x.h&&x.e&&f(x.e));
+  const res={gw,runs:[0,0],ammo:[0,0],ruck:[0,0],sim:[0,0]};
+  plan.forEach(pd=>{
+    const sv=saved[pd.id]||{};
+    let d=pd;
+    if(sv.customEvent)d=null;
+    else if(sv.swappedTemplate){try{d=getWorkoutTemplate(b,w,sv.swappedTemplate)||pd;}catch(e){}}
+    // planned counts use the original plan, done counts use what was actually on the day
+    if(has(pd,isRun))res.runs[1]++; if(has(pd,isAm))res.ammo[1]++; if(has(pd,isRuck))res.ruck[1]++; if(isSim(pd))res.sim[1]++;
+    if(!d)return;
+    const act=sv.actual||{},done=sv.done||{},mets=sv.metrics||{};
+    let ri=0;const logged=f=>{let hit=false;ri=0;(d.blocks||[]).forEach(x=>{if(x.h)return;const idx=ri++;if(f(x.e||'')&&((act[idx]&&String(act[idx]).trim())||done[idx]))hit=true;});
+      (d.metrics||[]).forEach((m,k)=>{if(f(m[0]||'')&&mets[k]&&String(mets[k]).trim())hit=true;});return hit;};
+    if(logged(isRun))res.runs[0]++;
+    if(logged(isAm))res.ammo[0]++;
+    if(logged(isRuck))res.ruck[0]++;
+    if(isSim(d)&&(Object.keys(act).some(k=>String(act[k]).trim())||Object.keys(mets).some(k=>String(mets[k]).trim())))res.sim[0]++;
+  });
+  return res;
+}
+function priorityCard(wnow){
+  if(!wnow)return '';
+  const rows=[wnow,wnow-1===12?11:wnow-1].map(priorityWeek)  /* W12 was skipped in the Nov 23 realign */.filter(Boolean);
+  if(!rows.length)return '';
+  const cell=(a,lbl)=>a[1]?`<span style="font-weight:700;color:${a[0]>=a[1]?'#5A9E6F':'#E4123A'}">${a[0]}/${a[1]}</span> ${lbl}`:'';
+  return `<div class="pl-card"><h4>Priority check: what the screener tests</h4>
+    ${rows.map((r,k)=>`<div class="mono pl-sm"><b>W${r.gw}${k===0?' (this week, so far)':' (last week)'}</b>: ${[cell(r.runs,'run days'),cell(r.ammo,'ammo can days'),cell(r.ruck,'ruck days'),cell(r.sim,'CFT sim / test')].filter(Boolean).join(' · ')}</div>`).join('')}
+    <div class="mono pl-sm">Counted from your logs: a day counts when a run, ammo can or ruck row has a number or a check. Pull-ups are tracked on the ladder card. Runs and ammo cans are half of the screener.</div></div>`;
+}
+PL.priorityWeek=priorityWeek;
 function renderToday(root){
   const s=streaks();
   const t=todayISO();const r=D.ready[t];
@@ -4628,6 +4956,7 @@ function renderToday(root){
      <div class="pl-stat"><b>${s.checks}</b><span>daily-check streak</span></div>
      <div class="pl-stat"><b>${s.minweeks}</b><span>minimum-week streak (1 pull + 1 CFT + 1 run)</span></div>
    </div>
+   ${priorityCard(wnow)}
    <div class="pl-grid2">
     <div class="pl-card"><h4>Readiness today</h4>${r?`<div class="pl-ready s${r.status}"><b>${({G:'GREEN',Y:'YELLOW',R:'RED'})[r.status]}</b> ${RTXT[r.status]}</div>`:'<div class="mono pl-sm">Not checked in yet. Open the READY tab (20 seconds).</div>'}</div>
     <div class="pl-card"><h4>Pull-ups vs ladder</h4><div class="pl-big2">${bp?bp.reps:'–'}<small> best strict on record</small></div><div class="mono pl-sm">Week ${wnow||'?'} target ${tgt}${bp?' · '+(bp.reps>=tgt?'ON PACE ✓':'BEHIND by '+(tgt-bp.reps)):''}. Hard requirement: 15 at the Feb screener (W24).</div></div>
@@ -6660,7 +6989,7 @@ function renderPlan(root){
 function yearBlocks(){
   const rows=[];
   // Nov 10: 12 at the Feb 2027 screener -> 15 by end of Year 1 -> 22 by end of junior year (Y3 B3, ~May 2029) -> 25 stretch
-  const pull=[16,17,18,19, 20,21,22,22, 23,24,24,25];
+  const pull=[18,18,19,19, 20,21,22,22, 23,24,24,25]; // Nov 24: raised after 10 clean reps
   const ruck=[50,55,60,65, 70,75,80,85, 90,95,100,105];
   const mi=[6,7,8,9, 9,10,11,12, 12,13,14,15];
   // Nov 10: matched to the corrected pipeline. Leatherneck is summer 2029, between junior and senior year (Y3 B4)
