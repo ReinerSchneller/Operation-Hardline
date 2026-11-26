@@ -1845,7 +1845,7 @@ const B2R={
   emom:[3,3,3,3,4,3,4,4,4,4,3,0],
   pushVol:[60,60,70,70,80,60,80,80,80,80,60,30],
   ammo:[82,0,85,87,0,88,88,90,92,0,95,0], // 0 = the test day carries the ammo max that week
-  ints:['5x800m @ 3:50','6x400m @ 1:40 in boots','none (MTC trial)','6x800m @ 3:44','6x400m @ 1:38 in boots','5x800m @ 3:42','6x800m @ 3:40','7x400m @ 1:36 in boots','6x800m @ 3:36','7x800m @ 3:35','4x400m @ 1:36 in boots','3x200m relaxed'],
+  ints:['5x800m @ 3:40 (sea level)','6x400m @ 1:40 in boots','none (MTC trial)','6x800m @ 3:44','6x400m @ 1:38 in boots','5x800m @ 3:42','6x800m @ 3:40','7x400m @ 1:36 in boots','6x800m @ 3:36','7x800m @ 3:35','4x400m @ 1:36 in boots','3x200m relaxed'],
   tempo:['3 mi @ 8:00/mi','3 mi @ 7:55/mi','3.5 mi @ 7:50/mi','none','3.5 mi @ 7:45/mi','3 mi @ 7:45/mi','none','none','none','4 mi @ 7:35/mi','2.5 mi @ 7:40/mi','none'],
   longRun:[0,4,0,5,0,4,0,5,0,6,0,0],
   ruckSat:[[5,40,'14:15'],0,[5,40,'14:00'],0,[6,40,'14:00'],0,[4,40,'14:00'],0,[6,45,'13:45'],0,[4,40,'14:00'],0],
@@ -2020,9 +2020,9 @@ function block2Rebuild(w){
       {h:'Cooldown 3'},
       {e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15-20 min',s:'-',note:''},
     ]};
-  const wed=[2,5,10].includes(w)?b2CftSim(i,w):wedBuilt;
+  let wed=[2,5,10].includes(w)?b2CftSim(i,w):wedBuilt;
 
-  const thu={id:'thu',name:'Thursday',focus:taper?'Rest (screener week)':'Pull-up Volume + Shoulders/Arms + Legs (3-block)',
+  let thu={id:'thu',name:'Thursday',focus:taper?'Rest (screener week)':'Pull-up Volume + Shoulders/Arms + Legs (3-block)',
     metrics:[['Total strict pull-ups','reps (target '+B2R.thuVol[i]+')'],['Plank hold','m:ss'],['Total session time','h:mm']],
     strip:taper?'Screener week. Daily minimums only, then rest.':'Pull-up volume day. '+B2R.thuVol[i]+' full strict reps in sets of '+Math.round(tgt/2)+', never to failure. If time runs short, cut legs first, then arms. Pull-up volume is the last thing to cut.',
     blocks:taper?[
@@ -2107,6 +2107,72 @@ function block2Rebuild(w){
       {e:'Review the week',t:'10 min',s:'-',note:'pull max, ammo cans, run paces, CFT numbers'},
       {e:'Deload trigger check',t:'2 min',s:'-',note:'see the strip above'}]};
 
+  // Nov 25: W13 = Thanksgiving leave. No gym, sea level. Mon and Tue stay as logged. Wed-Sat use bodyweight, any bar, and a loaded backpack.
+  if(w===1){
+    const LV='THANKSGIVING LEAVE (no gym, sea level). ';
+    const BAR='Any bar: doorway bar, playground, park, sturdy beam. NO BAR AT ALL: inverted rows under a sturdy table, same set count.';
+    const PACK='30lb backpack (about 3.5 full gallon jugs) held at the chest, press to lockout. Log the implement';
+    tue.strip=LV+'Run paces are about 10 s per 800 faster at sea level. '+tue.strip;
+    wed={id:'wed',name:'Wednesday',focus:'LEAVE: Ammo Sub + Bodyweight Push + MANUF Shuttles',
+      metrics:[['Ammo sub 2-min max','reps (target 80, write the implement)'],['Fastest shuttle round','m:ss'],['Total session time','h:mm']],
+      strip:LV+'AMMO DAY with no can. Use a 30lb loaded backpack or jugs. Reps will not match a real can, so the number is a baseline for this implement only. If time runs short, do Block 1 only.',
+      blocks:[...b2Daily(i,false),{h:'PM SESSION: 3 BLOCKS'},{h:'Warmup 3'},
+        {e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+        {h:'BLOCK 1: AMMO CANS (home sub)'},
+        {e:'Ammo Can 2-min Max (backpack sub)',t:'1 x 2 min',s:'30lb pack',note:PACK},
+        {e:'Ammo Can Density (backpack sub)',t:'5 x 40s on / 20s off',s:'30lb pack',note:'same pace every round'},
+        {e:'Ammo Can Overhead Hold (backpack sub)',t:'3x20s',s:'30lb pack',note:'lockout endurance'},
+        {h:'BLOCK 2: PUSH (no gym)'},
+        {e:'Decline Push-ups',t:'4x12-15',s:'feet on a couch or bed',note:'replaces bench. Stop 2 reps short of failure'},
+        {e:'Chair or Bench Dips',t:'4x12',s:'BW',note:'replaces dips and skull crushers'},
+        {e:'Pike Push-ups',t:'3x10',s:'BW',note:'replaces the shoulder press. Ammo can pressing strength'},
+        {e:'Diamond Push-ups',t:'3x12',s:'BW',note:'triceps'},
+        {h:'BLOCK 3: CFT CONDITIONING'},
+        {e:'MANUF Shuttles',t:'6 rounds',s:'25yd sprint out, 10 push-ups, 25yd sprint back',note:'60 s rest. Log the fastest round'},
+        {h:'Cooldown 3'},{e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};
+    thu={id:'thu',name:'Thursday',focus:'LEAVE: Pull-up Volume + Bodyweight Legs (Thanksgiving)',
+      metrics:[['Total strict pull-ups','reps (target 35)'],['Run time (if done)','mm:ss'],['Total session time','h:mm']],
+      strip:LV+'Thanksgiving. Short session, then eat. Pull-up volume is the one thing not to skip. '+BAR,
+      blocks:[...b2Daily(i,true),{h:'SESSION: 2 BLOCKS (about 40 min)'},{h:'Warmup 1'},
+        {e:'Warmup 1 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+        {h:'BLOCK 1: PULL-UP VOLUME'},
+        {e:'Strict Pull-up Volume',t:'35 total full reps',s:'sets of 5, rest 60-90 s',note:'any bar. When a rep comes up short, finish the total with 5 s negatives'},
+        {e:'Chin-over-bar Holds',t:'3x10-15s',s:'BW',note:''},
+        {e:'Slow Negatives',t:'3x3',s:'5s down',note:''},
+        {e:'Inverted Rows (table or low bar)',t:'3x12',s:'BW',note:'replaces the pulldown and rows'},
+        {h:'BLOCK 2: LEGS (backpack)'},
+        {e:'Bulgarian Split Squat',t:'3x10 each',s:'30lb backpack',note:'replaces the squat'},
+        {e:'Single-Leg RDL',t:'3x10 each',s:'30lb backpack',note:'replaces the RDL'},
+        {e:'Single-Leg Calf Raises',t:'3x15 each',s:'on a step',note:''},
+        {e:'Easy Run (optional, a Turkey Trot counts)',t:'3 mi',s:'Zone 2',note:'extra run day if you get the chance'},
+        {h:'Cooldown 1'},{e:'Cooldown 1 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};
+    fri={id:'fri',name:'Friday',focus:'LEAVE: Sea-Level Tempo + Pull Density + Ammo Sub',
+      metrics:[['Tempo avg pace','min/mi'],['EMOM pull-ups completed','reps'],['Total session time','h:mm']],
+      strip:LV+'RUN DAY. Sea level makes the same effort about 20 s per mile faster, so the pace target is 7:40, not 8:00. Then pull-ups and ammo cans. SHORT ON TIME: tempo plus the EMOM. '+BAR,
+      blocks:[...b2Daily(i,false),{h:'PM SESSION: 2 BLOCKS'},{h:'Warmup 2'},
+        {e:'Warmup 2 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+        {h:'BLOCK 1: TEMPO'},
+        {e:'Tempo Run',t:'3 mi',s:'7:40/mi (sea level)',note:'comfortably hard, even pace, no stops'},
+        {h:'BLOCK 2: PULL DENSITY + AMMO + ARMS'},
+        {e:'Pull-up EMOM',t:'10 min',s:'3 full reps each minute',note:'any bar'},
+        {e:'Ammo Can Lifts (backpack sub)',t:'3 x 1 min',s:'30lb pack',note:PACK},
+        {e:'Backpack Bent-over Rows',t:'3x12',s:'30lb pack',note:'back thickness without a gym'},
+        {e:'Backpack Curls',t:'3x12',s:'30lb pack',note:'hold the straps, elbows pinned'},
+        {h:'Cooldown 2'},{e:'Cooldown 2 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};
+    sat={id:'sat',name:'Saturday',focus:'LEAVE: Long Run + MANUF Practice (sea level)',
+      metrics:[['Run time','mm:ss'],['MANUF fastest round','m:ss'],['Total session time','h:mm']],
+      strip:LV+'RUN DAY. The ruck becomes a long run this week. Runs are the event you are furthest behind on, and sea level makes it easier. MANUF target 2:50.',
+      blocks:[...b2Daily(i,false),{h:'Warmup 3'},
+        {e:'Warmup 3 (see Warmup/Cooldown tab)',t:'12 min',s:'-',note:''},
+        {h:'BLOCK 1: AEROBIC BASE'},
+        {e:'Easy Run',t:'5 mi',s:'Zone 2',note:'conversational'},
+        {h:'BLOCK 2: MANUF PRACTICE (no partner)'},
+        {e:'MANUF Circuit',t:'3 rounds',s:'sprint, low crawl, high crawl, backpack carry, push-ups, throw',note:'use the backpack for the drag and carry. Log the fastest round'},
+        {h:'BLOCK 3: FINISHER'},
+        {e:'Backpack Suitcase Carry',t:'3x50m each hand',s:'30lb pack',note:'grip'},
+        {e:'Core Circuit',t:'2 rounds',s:'plank + side plank + hollow hold, 30s each',note:''},
+        {h:'Cooldown 3'},{e:'Cooldown 3 (see Warmup/Cooldown tab)',t:'15 min',s:'-',note:''}]};
+  }
   const out=[mon,tue,wed,thu,fri,sat,sun];
   out.b2r=true;
   return out;
